@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_AntiReflective_active</title>
+    <defs>
+        <circle id="path-1" cx="30" cy="30" r="22"></circle>
+        <filter x="-20.5%" y="-20.5%" width="140.9%" height="140.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Blue-/-Bright-/-Drive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="drive-layout-(active-buttons)" transform="translate(-356.000000, -676.000000)">
+            <g id="btn_AntiReflective_active" transform="translate(356.000000, 676.000000)">
+                <g id="btn_base">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.3" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use stroke="#FFFFFF" stroke-width="3" xlink:href="#path-1"></use>
+                    <circle stroke="#000000" stroke-width="2" stroke-linejoin="square" cx="30" cy="30" r="21"></circle>
+                </g>
+                <g id="reflective" transform="translate(18.266667, 21.200000)" fill="#FFFFFF">
+                    <path d="M22,16.1333333 C22.4050088,16.1333333 22.7333333,16.4616579 22.7333333,16.8666667 C22.7333333,17.2716755 22.4050088,17.6 22,17.6 L1.46666667,17.6 C1.06165785,17.6 0.733333333,17.2716755 0.733333333,16.8666667 C0.733333333,16.4616579 1.06165785,16.1333333 1.46666667,16.1333333 L22,16.1333333 Z M22.9079365,-4.61852778e-14 C23.2165147,-4.61852778e-14 23.4666667,0.246243394 23.4666667,0.550000001 L23.4666667,4.95000001 C23.4666667,5.25375665 23.2165147,5.5 22.9079365,5.5 C22.5993583,5.5 22.3492063,5.25375665 22.3492063,4.95000001 L22.3492063,1.87781746 L12.336,11.733 L19.0666667,11.7333333 C19.4716755,11.7333333 19.8,12.0616579 19.8,12.4666667 C19.8,12.8716755 19.4716755,13.2 19.0666667,13.2 L4.4,13.2 C3.99499118,13.2 3.66666667,12.8716755 3.66666667,12.4666667 C3.66666667,12.0616579 3.99499118,11.7333333 4.4,11.7333333 L8.894,11.733 L0.163648275,3.13890874 C-0.0545494249,2.92412037 -0.0545494249,2.57587964 0.163648275,2.36109128 C0.381845979,2.14630291 0.735614337,2.14630291 0.953812042,2.36109128 L10.474,11.733 L10.756,11.733 L21.5590426,1.1 L18.4380952,1.1 C18.1295171,1.1 17.8793651,0.853756609 17.8793651,0.550000001 C17.8793651,0.246243394 18.1295171,-4.61852778e-14 18.4380952,-4.61852778e-14 L22.9079365,-4.61852778e-14 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

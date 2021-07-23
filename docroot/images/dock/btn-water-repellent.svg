@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+    <defs>
+        <filter id="prefix__a" width="135.8%" height="135.8%" x="-17.9%" y="-17.9%" filterUnits="objectBoundingBox">
+            <feMorphology in="SourceAlpha" operator="dilate" radius=".867" result="shadowSpreadOuter1"/>
+            <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.200912369 0"/>
+        </filter>
+        <circle id="prefix__b" cx="30" cy="30" r="22"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <use fill="#000" filter="url(#prefix__a)" xlink:href="#prefix__b"/>
+        <use fill="#FFF" fill-opacity=".3" stroke="#FFF" stroke-opacity=".503" stroke-width=".733" xlink:href="#prefix__b"/>
+        <g fill-rule="nonzero">
+            <path stroke="#FFF" stroke-linejoin="round" stroke-width="1.1" d="M6.6 5.133C3.172 9.103 0 13.81 0 18.027c0 4.219 2.957 7.64 6.6 7.64s6.6-3.421 6.6-7.64c0-4.218-3.172-8.925-6.6-12.894z" transform="translate(19 17.533)"/>
+            <path fill="#FFF" d="M10.448 17.6c-.158-.003-.31.059-.417.17-.106.111-.158.26-.14.41.12 1.269-.693 2.979-1.596 3.606-.16.11-.246.294-.225.48.021.188.147.35.328.424.181.075.391.051.549-.062 1.347-.935 2.195-2.837 2.033-4.546-.021-.266-.25-.474-.532-.482z" transform="translate(19 17.533)"/>
+            <path stroke="#FFF" stroke-linejoin="round" stroke-width=".733" d="M18.333 0c-1.904 2.126-3.666 4.648-3.666 6.908 0 2.26 1.642 4.092 3.666 4.092S22 9.167 22 6.908c0-2.26-1.762-4.782-3.667-6.908z" transform="translate(19 17.533)"/>
+            <path fill="#FFF" d="M20.258 6.6c-.08-.002-.156.034-.209.097-.053.064-.079.15-.07.235.06.724-.347 1.702-.798 2.06-.08.063-.123.168-.113.275.011.107.074.2.164.242.091.042.196.029.275-.036.674-.534 1.097-1.62 1.017-2.597-.011-.153-.126-.272-.266-.276z" transform="translate(19 17.533)"/>
+        </g>
+    </g>
+</svg>

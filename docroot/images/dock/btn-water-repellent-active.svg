@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_WaterRepellent_active</title>
+    <defs>
+        <circle id="path-1" cx="30" cy="30" r="22"></circle>
+        <filter x="-20.5%" y="-20.5%" width="140.9%" height="140.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Blue-/-Bright-/-Drive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="drive-layout-(active-buttons)" transform="translate(-608.000000, -676.000000)">
+            <g id="btn_WaterRepellent_active" transform="translate(608.000000, 676.000000)">
+                <g id="btn_base">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.3" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use stroke="#FFFFFF" stroke-width="3" xlink:href="#path-1"></use>
+                    <circle stroke="#000000" stroke-width="2" stroke-linejoin="square" cx="30" cy="30" r="21"></circle>
+                </g>
+                <g id="water" transform="translate(19.000000, 17.533333)" fill-rule="nonzero">
+                    <path d="M6.6,5.13333333 C3.1724,9.10228856 0,13.8090033 0,18.0273551 C0,22.2457319 2.95702,25.6666667 6.6,25.6666667 C10.24298,25.6666667 13.2,22.2457319 13.2,18.0273551 C13.2,13.809006 10.027545,9.10228856 6.6,5.13333333 Z" id="Shape" stroke="#FFFFFF" stroke-width="1.1" stroke-linejoin="round"></path>
+                    <path d="M8.61829062,17.6001213 C8.77644587,17.5968789 8.92838821,17.6587654 9.03520516,17.7699317 C9.14202212,17.881098 9.19333911,18.0307472 9.17601385,18.1805539 C9.05629775,19.448831 9.86850005,21.158894 10.772027,21.7856816 C10.932331,21.8958208 11.0181578,22.0795263 10.9967656,22.266717 C10.9753735,22.4539077 10.8500618,22.6157118 10.6686354,22.6904032 C10.487209,22.7650945 10.2776505,22.7411529 10.1199038,22.6277117 C8.77232899,21.6928668 7.92492577,19.7914976 8.08629538,18.0824548 C8.10813818,17.8157519 8.33761541,17.6076964 8.61829062,17.6001213 L8.61829062,17.6001213 Z" id="Path" fill="#FFFFFF" transform="translate(9.533333, 20.166667) scale(-1, 1) translate(-9.533333, -20.166667) "></path>
+                    <path d="M18.3333333,0 C16.4291111,2.12622601 14.6666667,4.64768033 14.6666667,6.90751167 C14.6666667,9.1673564 16.3094556,11 18.3333333,11 C20.3572111,11 22,9.1673564 22,6.90751167 C22,4.64768181 20.237525,2.12622601 18.3333333,0 Z" id="Shape" stroke="#FFFFFF" stroke-width="0.733333333" stroke-linejoin="round"></path>
+                    <path d="M19.3424786,6.60006932 C19.4215563,6.5982165 19.4975274,6.63358022 19.5509359,6.69710384 C19.6043444,6.76062745 19.6300029,6.84614123 19.6213403,6.93174508 C19.5614822,7.65647485 19.9675834,8.63365371 20.4193469,8.99181808 C20.4994988,9.05475473 20.5424122,9.15972934 20.5317161,9.26669545 C20.5210201,9.37366157 20.4583642,9.46612105 20.367651,9.50880181 C20.2769378,9.55148257 20.1721586,9.53780165 20.0932853,9.47297814 C19.4194978,8.93878106 18.9957962,7.85228434 19.076481,6.87568847 C19.0874024,6.7232868 19.202141,6.60439792 19.3424786,6.60006932 L19.3424786,6.60006932 Z" id="Path" fill="#FFFFFF" transform="translate(19.800000, 8.066667) scale(-1, 1) translate(-19.800000, -8.066667) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
