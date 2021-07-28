@@ -323,7 +323,9 @@ function handleGestureMove(event) {
         zoomCanvas,
         zoomBlur,
         foregroundZoomCanvas,
-        touch.getTouchInput()
+        touch.getTouchInput(),
+        circleMask,
+        zoomCMBlur
       );
       blurZO(zoomOverlay);
       drawCMTouch();
@@ -382,7 +384,9 @@ function handleGestureStart(event) {
         zoomCanvas,
         zoomBlur,
         foregroundZoomCanvas,
-        touch.getTouchInput()
+        touch.getTouchInput(),
+        circleMask,
+        zoomCMBlur
       );
       zoomSelected.style.display = "none";
     } else {
@@ -393,7 +397,9 @@ function handleGestureStart(event) {
       lens.drawCircle(
         midgroundAfterCanvas,
         foregroundAfterCanvas,
-        touch.getTouchInput()
+        touch.getTouchInput(),
+        circleMask,
+        zoomCMBlur
       );
     }
 
@@ -767,7 +773,7 @@ function drawCMTouch() {
   circleMaskCtx.clip();
 
   // blur in circle mask
-  blurCMTouch(circleMask);
+  blurCM(circleMask);
 }
 
 function drawCurveCM(circleMask) {
@@ -791,11 +797,11 @@ function blurCM(canvas) {
   var radiusInt = Math.ceil(lens.desiredRadius);
 
   // create an off-screen canvas
-  var bCanvas = zoomBlur.cloneNode();
+  var bCanvas = zoomCMBlur.cloneNode();
   var bCtx = bCanvas.getContext("2d");
 
   // make our clear-cut on the offscreen canvas
-  bCtx.drawImage(zoomBlur, 0, 0, circleMaskWidth, zoomBlur.height);
+  bCtx.drawImage(zoomCMBlur, 0, 0, circleMaskWidth, zoomCMBlur.height);
   StackBlur.canvasRGB(
     bCanvas,
     Math.floor(circleMaskWidth / 2 - radiusInt),
@@ -811,7 +817,7 @@ function blurCM(canvas) {
 
 function blurCMTouch(canvas) {
   var ctx = canvas.getContext("2d");
-  ctx.drawImage(fgBlurImg, 0, 0, circleMaskWidth, circleMaskHeight);
+  ctx.drawImage(fgBlurImg, 0, 0, circleMaskWidth + 100, circleMaskHeight + 100);
 }
 
 // draw left curve in circle mask
@@ -910,8 +916,11 @@ function handleLens1ButtonTouchStart(e) {
       midgroundAfterCanvas,
       foregroundAfterCanvas,
       zoomCanvas,
+      zoomBlur,
       foregroundZoomCanvas,
-      touch.getTouchInput()
+      touch.getTouchInput(),
+      circleMask,
+      zoomCMBlur
     );
     if (touch.getGesturePosition(event)) {
       if (infoBox.style.display !== "flex" && selectedLens == 1) {
@@ -957,8 +966,11 @@ function handleLens2ButtonTouchStart(e) {
       midgroundAfterCanvas,
       foregroundAfterCanvas,
       zoomCanvas,
+      zoomBlur,
       foregroundZoomCanvas,
-      touch.getTouchInput()
+      touch.getTouchInput(),
+      circleMask,
+      zoomCMBlur
     );
     if (touch.getGesturePosition(event)) {
       if (selectedLens == 2) {
@@ -1092,6 +1104,7 @@ window.onload = function init() {
   zoomCanvas = document.getElementById("zoomCanvas");
   foregroundZoomCanvas = document.getElementById("foregroundZoomCanvas");
   circleMask = document.getElementById("circle-mask");
+  zoomCMBlur = document.getElementById("zoomcm_blur");
   zoomOverlay = document.getElementById("zoom-overlay");
   zoomBlur = document.getElementById("zoom_blur");
   zoomSelected = document.getElementById("zoom-selected");
@@ -1128,13 +1141,15 @@ window.onload = function init() {
     zoomCanvas,
     zoomBlur,
     foregroundZoomCanvas,
+    zoomCMBlur
   ]);
   lens.drawBgImg(
     midgroundCanvas,
     foregroundCanvas,
     zoomCanvas,
     zoomBlur,
-    foregroundZoomCanvas
+    foregroundZoomCanvas,
+    zoomCMBlur
   );
   lens.prepLens(animCanvas, preplaceTextGroup, preplaceText, circleMask);
   // lens.updateTouch(null);
@@ -1191,12 +1206,14 @@ window.onresize = function () {
     zoomCanvas,
     zoomBlur,
     foregroundZoomCanvas,
+    zoomCMBlur
   ]);
   lens.drawBgImg(
     midgroundCanvas,
     foregroundCanvas,
     zoomCanvas,
     zoomBlur,
-    foregroundZoomCanvas
+    foregroundZoomCanvas,
+    zoomCMBlur
   );
 };

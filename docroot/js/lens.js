@@ -45,6 +45,8 @@ var lens = (function () {
   var offsetY = document.documentElement.clientHeight / 2;
   var pageX = document.documentElement.clientWidth;
   var zoom = offsetY / desireDiameter;
+  zoom = Math.round(parseFloat(zoom) * 10)/10 - 0.02;
+
   var zoomX = zoom - pageX / (pageX * zoom);
   zoomX = zoomX >= 0.8 && zoomX <= 0.9 ? 0.9 : parseFloat(zoomX.toFixed(1));
   // var zoomX =
@@ -152,8 +154,22 @@ var lens = (function () {
     zoomCanvas,
     zoomBlur,
     foregroundZoomCanvas,
-    touchInput
+    touchInput,
+    circleMask,
+    zoomCMBlur
   ) {
+    /*console.log(circleMask.style.top);
+    console.log(circleMask.style.left);
+    parseInt(circleMask.style.left, 10),
+    parseInt(circleMask.style.top, 10)*/
+
+    var cmLeft = parseInt(circleMask.style.left, 10);
+    var cmTop = parseInt(circleMask.style.top, 10);
+    var cmHeight = circleMask.height;
+    var cmWidth = circleMask.width;
+
+    var moveX = -(cmLeft * zoom);
+
     var zoomY = (offsetY + hImgStandard) / desireDiameter;
     // Only draw if touched.
     if (touchInput !== null && typeof touchInput !== "undefined") {
@@ -162,6 +178,7 @@ var lens = (function () {
       var foregroundAfterContext = foregroundAfterCanvas.getContext("2d");
       var zoomContext = zoomCanvas.getContext("2d");
       var ZBContext = zoomBlur.getContext("2d");
+      var ZBCMContext = zoomCMBlur.getContext("2d");
       var foregroundZoomContext = foregroundZoomCanvas.getContext("2d");
 
       // Clear the whole canvases.
@@ -210,13 +227,7 @@ var lens = (function () {
             0,
             0,
             zoom,
-            -(
-              util.clamp(
-                touchInput.center.x,
-                desiredRadius,
-                zoomCanvas.width - desiredRadius
-              ) - desiredRadius
-            ) * zoomX,
+            moveX,
             -(
               util.clamp(
                 touchInput.center.y,
@@ -236,13 +247,7 @@ var lens = (function () {
             0,
             0,
             zoom,
-            -(
-              util.clamp(
-                touchInput.center.x,
-                desiredRadius,
-                zoomBlur.width - desiredRadius
-              ) - desiredRadius
-            ) * zoomX,
+            moveX,
             -(
               util.clamp(
                 touchInput.center.y,
@@ -255,6 +260,26 @@ var lens = (function () {
           );
           ZBContext.filter = "blur(p16.2x)";
           drawBgImgAfter(zoomBlur, ZBImg);
+
+          // CM Zoom blur
+          ZBCMContext.clearRect(0, 0, zoomCMBlur.width, zoomCMBlur.height);
+          ZBCMContext.setTransform(
+            1,
+            0,
+            0, // No skewing
+            1,
+            -(cmLeft - desiredRadius / 2),
+            -(
+              util.clamp(
+                touchInput.center.y,
+                desiredRadius + offsetY,
+                zoomCMBlur.height + offsetY - desiredRadius - hImgStandard
+              ) -
+              desiredRadius -
+              offsetY
+            ) * zoom
+          );
+          drawBgImgAfter(zoomCMBlur, ZBImg);
         }
       } else if (currentPosition == 1) {
         // middleground
@@ -290,13 +315,7 @@ var lens = (function () {
             0,
             0, // No skewing
             zoom,
-            -(
-              util.clamp(
-                touchInput.center.x,
-                desiredRadius,
-                zoomCanvas.width - desiredRadius
-              ) - desiredRadius
-            ) * zoomX,
+            moveX,
             -(
               util.clamp(
                 touchInput.center.y,
@@ -317,13 +336,7 @@ var lens = (function () {
             0,
             0, // No skewing
             zoom,
-            -(
-              util.clamp(
-                touchInput.center.x,
-                desiredRadius,
-                zoomBlur.width - desiredRadius
-              ) - desiredRadius
-            ) * zoomX,
+            moveX,
             -(
               util.clamp(
                 touchInput.center.y,
@@ -335,6 +348,26 @@ var lens = (function () {
             ) * zoomY
           );
           drawBgImgAfter(zoomBlur, ZBImg);
+
+          // CM Zoom blur
+          ZBCMContext.clearRect(0, 0, zoomCMBlur.width, zoomCMBlur.height);
+          ZBCMContext.setTransform(
+            1,
+            0,
+            0, // No skewing
+            1,
+            -(cmLeft - desiredRadius / 2),
+            -(
+              util.clamp(
+                touchInput.center.y,
+                desiredRadius + offsetY,
+                zoomCMBlur.height + offsetY - desiredRadius - hImgStandard
+              ) -
+              desiredRadius -
+              offsetY
+            ) * zoom
+          );
+          drawBgImgAfter(zoomCMBlur, ZBImg);
         }
       } else {
         // foreground
@@ -366,13 +399,7 @@ var lens = (function () {
             0,
             0, // No skewing
             zoom,
-            -(
-              util.clamp(
-                touchInput.center.x,
-                desiredRadius,
-                zoomCanvas.width - desiredRadius
-              ) - desiredRadius
-            ) * zoomX,
+            moveX,
             -(
               util.clamp(
                 touchInput.center.y,
@@ -393,13 +420,7 @@ var lens = (function () {
             0,
             0, // No skewing
             zoom,
-            -(
-              util.clamp(
-                touchInput.center.x,
-                desiredRadius,
-                zoomBlur.width - desiredRadius
-              ) - desiredRadius
-            ) * zoomX,
+            moveX,
             -(
               util.clamp(
                 touchInput.center.y,
@@ -412,19 +433,33 @@ var lens = (function () {
           );
           drawBgImgAfter(zoomBlur, foregroundAfterImg);
 
+          // CM Zoom blur
+          ZBCMContext.clearRect(0, 0, zoomCMBlur.width, zoomCMBlur.height);
+          ZBCMContext.setTransform(
+            1,
+            0,
+            0, // No skewing
+            1,
+            -(cmLeft - desiredRadius / 2),
+            -(
+              util.clamp(
+                touchInput.center.y,
+                desiredRadius + offsetY,
+                zoomCMBlur.height + offsetY - desiredRadius - hImgStandard
+              ) -
+              desiredRadius -
+              offsetY
+            ) * zoom
+          );
+          drawBgImgAfter(zoomCMBlur, foregroundAfterImg);
+
           // foreground
           foregroundZoomContext.setTransform(
             zoom,
             0,
             0, // No skewing
             zoom,
-            -(
-              util.clamp(
-                touchInput.center.x,
-                desiredRadius,
-                zoomCanvas.width - desiredRadius
-              ) - desiredRadius
-            ) * zoomX,
+            moveX,
             -(
               util.clamp(
                 touchInput.center.y,
@@ -581,6 +616,7 @@ var lens = (function () {
     noOfLegs: noOfLegs,
     // updateTouch: updateTouch,
     desiredRadius: desiredRadius,
+    zoom: zoom,
     scaleToFillImage: scaleToFillImage,
     drawCircle: drawCircle,
     drawBgImg: drawBgImg,
