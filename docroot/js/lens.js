@@ -181,6 +181,8 @@ var lens = (function () {
       var ZBCMContext = zoomCMBlur.getContext("2d");
       var foregroundZoomContext = foregroundZoomCanvas.getContext("2d");
 
+      var moveZCMBlurY = -(cmTop - (clientHeight / 2));
+
       // Clear the whole canvases.
       midgroundAfterContext.clearRect(
         0,
@@ -268,16 +270,8 @@ var lens = (function () {
             0,
             0, // No skewing
             1,
-            -(cmLeft - desiredRadius / 2),
-            -(
-              util.clamp(
-                touchInput.center.y,
-                desiredRadius + offsetY,
-                zoomCMBlur.height + offsetY - desiredRadius - hImgStandard
-              ) -
-              desiredRadius -
-              offsetY
-            ) * zoom
+            -cmLeft,
+            moveZCMBlurY
           );
           drawBgImgAfter(zoomCMBlur, ZBImg);
         }
@@ -356,16 +350,8 @@ var lens = (function () {
             0,
             0, // No skewing
             1,
-            -(cmLeft - desiredRadius / 2),
-            -(
-              util.clamp(
-                touchInput.center.y,
-                desiredRadius + offsetY,
-                zoomCMBlur.height + offsetY - desiredRadius - hImgStandard
-              ) -
-              desiredRadius -
-              offsetY
-            ) * zoom
+            -cmLeft,
+            moveZCMBlurY
           );
           drawBgImgAfter(zoomCMBlur, ZBImg);
         }
@@ -440,16 +426,8 @@ var lens = (function () {
             0,
             0, // No skewing
             1,
-            -(cmLeft - desiredRadius / 2),
-            -(
-              util.clamp(
-                touchInput.center.y,
-                desiredRadius + offsetY,
-                zoomCMBlur.height + offsetY - desiredRadius - hImgStandard
-              ) -
-              desiredRadius -
-              offsetY
-            ) * zoom
+            -cmLeft,
+            moveZCMBlurY
           );
           drawBgImgAfter(zoomCMBlur, foregroundAfterImg);
 

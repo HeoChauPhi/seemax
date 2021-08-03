@@ -334,7 +334,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 999;
+  z-index: 4;
   display: none;
 }
 .drawer-button {
@@ -528,7 +528,7 @@ body {
   background-color: #000000;
 }
 .visualpref-container {
-  z-index: 999 !important;
+  /*z-index: 999 !important;*/
   position: absolute;
   bottom: 0;
   width: 360px;

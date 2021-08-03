@@ -801,7 +801,7 @@ function blurCM(canvas) {
   var bCtx = bCanvas.getContext("2d");
 
   // make our clear-cut on the offscreen canvas
-  bCtx.drawImage(zoomCMBlur, 0, 0, circleMaskWidth, zoomCMBlur.height);
+  bCtx.drawImage(zoomCMBlur, 0, 0, zoomCMBlur.width, zoomCMBlur.height);
   StackBlur.canvasRGB(
     bCanvas,
     Math.floor(circleMaskWidth / 2 - radiusInt),
@@ -1141,6 +1141,7 @@ window.onload = function init() {
     zoomCanvas,
     zoomBlur,
     foregroundZoomCanvas,
+    circleMask,
     zoomCMBlur
   ]);
   lens.drawBgImg(
@@ -1206,6 +1207,7 @@ window.onresize = function () {
     zoomCanvas,
     zoomBlur,
     foregroundZoomCanvas,
+    circleMask,
     zoomCMBlur
   ]);
   lens.drawBgImg(
