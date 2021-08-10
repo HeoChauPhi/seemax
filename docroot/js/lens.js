@@ -158,11 +158,6 @@ var lens = (function () {
     circleMask,
     zoomCMBlur
   ) {
-    /*console.log(circleMask.style.top);
-    console.log(circleMask.style.left);
-    parseInt(circleMask.style.left, 10),
-    parseInt(circleMask.style.top, 10)*/
-
     var cmLeft = parseInt(circleMask.style.left, 10);
     var cmTop = parseInt(circleMask.style.top, 10);
     var cmHeight = circleMask.height;

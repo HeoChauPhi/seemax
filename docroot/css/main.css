@@ -328,11 +328,6 @@ body {
   /*display: block !important;*/
 }
 
-#foregroundAfterCanvas,
-#foregroundZoomCanvas {
-  transition: none !important;
-}
-
 .selector-group {
   width: 60px;
   height: 142px;

@@ -282,11 +282,11 @@ function handleGestureMove(event) {
           midgroundCanvas.style.bottom = `-${hImgStandard}px`;
           midgroundAfterCanvas.style.top = "auto";
           midgroundAfterCanvas.style.bottom = `-${hImgStandard}px`;
-          foregroundCanvas.style.bottom = "-500px";
-          foregroundAfterCanvas.style.bottom = "-500px";
+          foregroundCanvas.style.bottom = "-1000px";
+          foregroundAfterCanvas.style.bottom = "-1000px";
           zoomCanvas.style.bottom = `-${hImgStandard}px`;
           zbY = 0;
-          foregroundZoomCanvas.style.bottom = "-500px";
+          foregroundZoomCanvas.style.bottom = "-1000px";
           break;
         }
         case 1: {
@@ -295,11 +295,11 @@ function handleGestureMove(event) {
           midgroundCanvas.style.bottom = "0px";
           midgroundAfterCanvas.style.top = "auto";
           midgroundAfterCanvas.style.bottom = "0px";
-          foregroundCanvas.style.bottom = "-500px";
-          foregroundAfterCanvas.style.bottom = "-500px";
+          foregroundCanvas.style.bottom = "-1000px";
+          foregroundAfterCanvas.style.bottom = "-1000px";
           zoomCanvas.style.bottom = "0px";
           zbY = 0 - hImgStandard;
-          foregroundZoomCanvas.style.bottom = "-500px";
+          foregroundZoomCanvas.style.bottom = "-1000px";
           break;
         }
         case 2: {
@@ -805,7 +805,7 @@ function blurCM(canvas) {
   StackBlur.canvasRGB(
     bCanvas,
     Math.floor(circleMaskWidth / 2 - radiusInt),
-    Math.floor(clientHeight / 4 - radiusInt - zbY),
+    Math.floor(clientHeight / 6 - radiusInt - zbY),
     radiusInt * 2,
     radiusInt * 2,
     setBlur
